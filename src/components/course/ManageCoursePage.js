@@ -17,6 +17,7 @@ export class ManageCoursePage extends React.Component {
     };
 
     this.saveCourse = this.saveCourse.bind(this);
+    this.deleteCourse = this.deleteCourse.bind(this);
     this.updateCourseState = this.updateCourseState.bind(this);
   }
 
@@ -56,16 +57,26 @@ export class ManageCoursePage extends React.Component {
 
     this.setState({saving: true});
     this.props.actions.saveCourse(this.state.course)
-      .then(() => this.redirect())
+      .then(() => this.redirect('saved!!'))
       .catch(error => {
         toastr.error(error);
         this.setState({saving: false});
       });
   }
 
-  redirect() {
+  deleteCourse(event){
+    event.preventDefault();
+    this.props.actions.deleteCourse(this.state.course)
+      .then(() => this.redirect('deleted'))
+      .catch(error=>{
+        toastr.error(error);
+        this.setState({saving: false});
+      });
+  }
+
+  redirect(msg) {
     this.setState({saving: false});
-    toastr.success('Course saved.');
+    toastr.success(`Course ${msg}`);
     this.context.router.push('/courses');
   }
 
@@ -78,6 +89,7 @@ export class ManageCoursePage extends React.Component {
         errors={this.state.errors}
         allAuthors={this.props.authors}
         saving={this.state.saving}
+        onDelete={this.deleteCourse}
       />
     );
   }

@@ -43,7 +43,56 @@ const courses = [
     authorId: "cory-house",
     length: "5:10",
     category: "HTML5"
-  }
+  },
+  {
+    id:"karl6",
+    title: "react",
+    authorId:"karl6",
+    length: "karl6",
+    category: "karl6"
+  },
+  {
+    id:"karl7",
+    title: "C#",
+    authorId:"karl7",
+    length: "karl7",
+    category: "karl7"
+  },
+  {
+    id:"karl8",
+    title: "Angular",
+    authorId:"karl8",
+    length: "karl8",
+    category: "karl8"
+  },
+  {
+    id:"karl9",
+    title: "php",
+    authorId:"karl9",
+    length: "karl9",
+    category: "karl9"
+  },
+  {
+    id:"karl10",
+    title: "node",
+    authorId:"karl10",
+    length: "karl10",
+    category: "karl10"
+  },
+  {
+    id:"karl11",
+    title: "java",
+    authorId:"karl11",
+    length: "karl11",
+    category: "karl11"
+  },
+  {
+    id:"karl12",
+    title: "IOS",
+    authorId:"karl12",
+    length: "karl12",
+    category: "karl12"
+  },
 ];
 
 function replaceAll(str, find, replace) {
@@ -97,8 +146,10 @@ class CourseApi {
         const indexOfCourseToDelete = courses.findIndex(course => {
           course.id == courseId;
         });
+        //const deletedCourse = courses[indexOfCourseToDelete];
         courses.splice(indexOfCourseToDelete, 1);
-        resolve();
+        console.log("this is the callback id :"+ courseId);
+        resolve(courseId);
       }, delay);
     });
   }

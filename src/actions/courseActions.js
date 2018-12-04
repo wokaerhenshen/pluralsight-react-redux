@@ -14,6 +14,10 @@ export function updateCourseSuccess(course) {
   return {type: types.UPDATE_COURSE_SUCCESS, course};
 }
 
+export function deleteCourseSuccess(courseId){
+  return {type: types.DELETE_COURSE_SUCCESS, courseId};
+}
+
 // Functions below handle asynchronous calls.
 // Each returns a function that accepts a dispatch.
 // These are used by redux-thunk to support asynchronous interactions.
@@ -36,6 +40,21 @@ export function saveCourse(course) {
     }).catch(error => {
       dispatch(ajaxCallError(error));
       throw(error);
+    });
+  };
+}
+
+export function deleteCourse(course){
+  return function(dispatch,getState){
+    //dispatch(beginAjaxCall());
+    //console.log(course.id);
+    //debugger;
+    return CourseApi.deleteCourse(course.id).then(courseId=>{
+      //console.log(courseId);
+      dispatch(deleteCourseSuccess(courseId));
+    }).catch(error=>{
+      //dispatch(ajaxCallError(error));
+      throw(error);      
     });
   };
 }

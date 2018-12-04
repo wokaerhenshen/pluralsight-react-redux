@@ -18,10 +18,18 @@ export default function courses(state = initialState.courses, action) {
       ];
 
     case types.UPDATE_COURSE_SUCCESS:
+    // select all the course which id not equl to the course 
+    //which we updated adding with this updated course combine
+    // together to the new state
       return [
         ...state.filter(course => course.id !== action.course.id),
         Object.assign({}, action.course)
       ];
+
+    case types.DELETE_COURSE_SUCCESS:
+      //debugger;
+      var clonedState = JSON.parse(JSON.stringify(state.filter(course => course.id !== action.courseId)));
+      return clonedState;
 
     default:
       return state;
