@@ -3,8 +3,10 @@ import delay from './delay';
 const StudentCourses = [
     {
         id:'1',
-        student:'test',
-        course:'fake'
+        studentId:"1",
+        courseId :"react-flux-building-applications",
+        student:'karl',
+        course:'Building Applications in React and Flux'
     }
 ];
 
