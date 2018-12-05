@@ -70,7 +70,7 @@ export class ManageCoursePage extends React.Component {
       .then(() => this.redirect('deleted'))
       .catch(error=>{
         toastr.error(error);
-        this.setState({saving: false});
+        //this.setState({saving: false});
       });
   }
 
@@ -96,7 +96,7 @@ export class ManageCoursePage extends React.Component {
 }
 
 ManageCoursePage.propTypes = {
-  course: PropTypes.object.isRequired,
+  //course: PropTypes.object.isRequired,
   authors: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
@@ -113,18 +113,16 @@ function getCourseById(courses, id) {
 }
 
 function mapStateToProps(state, ownProps) {
-  const courseId = ownProps.params.id; // from the path `/course/:id`
-
-  let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
-
-  if (courseId && state.courses.length > 0) {
-    course = getCourseById(state.courses, courseId);
-  }
-
-  return {
-    course: course,
-    authors: authorsFormattedForDropdown(state.authors)
-  };
+    const courseId = ownProps.params.id; 
+    //debugger;
+    let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
+    if (courseId && state.courses.length > 0 && state.courses.filter(course=> course.id == courseId).length != 0) {
+      course = getCourseById(state.courses, courseId);
+    }
+    return {
+      course: course,
+      authors: authorsFormattedForDropdown(state.authors)
+    };
 }
 
 function mapDispatchToProps(dispatch) {

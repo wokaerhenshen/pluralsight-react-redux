@@ -1,5 +1,6 @@
  import * as types from '../actions/actionTypes';
  import initialState from './initialState';
+import { debug } from 'util';
 
 // IMPORTANT: Note that with Redux, state should NEVER be changed.
 // State is considered immutable. Instead,
@@ -21,15 +22,19 @@ export default function courses(state = initialState.courses, action) {
     // select all the course which id not equl to the course 
     //which we updated adding with this updated course combine
     // together to the new state
+      //debugger;
       return [
         ...state.filter(course => course.id !== action.course.id),
         Object.assign({}, action.course)
       ];
 
     case types.DELETE_COURSE_SUCCESS:
-      //debugger;
-      var clonedState = JSON.parse(JSON.stringify(state.filter(course => course.id !== action.courseId)));
-      return clonedState;
+        //console.log(state);
+        //console.log(action);
+        return [
+          ...state.filter(course => course.id !== action.courseId)
+        ]
+      
 
     default:
       return state;

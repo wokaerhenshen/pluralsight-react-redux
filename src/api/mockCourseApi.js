@@ -148,7 +148,7 @@ class CourseApi {
         });
         //const deletedCourse = courses[indexOfCourseToDelete];
         courses.splice(indexOfCourseToDelete, 1);
-        console.log("this is the callback id :"+ courseId);
+        //console.log("this is the callback id :"+ courseId);
         resolve(courseId);
       }, delay);
     });
