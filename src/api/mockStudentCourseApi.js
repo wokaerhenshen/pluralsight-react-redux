@@ -1,4 +1,7 @@
 import delay from './delay';
+import CourseApi from './mockCourseApi';
+import StudentAPI from './mockStudentApi';
+
 
 const StudentCourses = [
     {
@@ -20,7 +23,22 @@ class StudentCourseApi {
     }
 
     static saveStudentCourse(studentCourse){
-
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                //get student name from studentId               
+                //get courseName from courseId
+                //create new StudentCourse
+                let StudentCourse = {
+                    id :"testId",
+                    studentId : studentCourse.studentId,
+                    courseId: studentCourse.courseId,
+                    student : studentCourse.studentId,
+                    course : studentCourse.courseId
+                };
+                StudentCourses.push(StudentCourse);
+                resolve(StudentCourse);
+            },delay);
+        });
     }
 }
 

@@ -45,7 +45,7 @@ const CourseForm = ({course, allAuthors, onSave, onChange,onDelete, saving, erro
       <input 
        type="submit"
        value = {'Delete'}
-       className = 'btn btn-danger'
+       className = "btn btn-danger"
        style={{marginLeft:'10px'}}
        onClick ={onDelete}
        />
@@ -59,7 +59,8 @@ CourseForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   saving: PropTypes.bool,
-  errors: PropTypes.object
+  errors: PropTypes.object,
+  onDelete:PropTypes.func
 };
 
 export default CourseForm;

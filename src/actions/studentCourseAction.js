@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import StudentCourseApi from '../api/mockStudentCourseApi'
+import StudentCourseApi from '../api/mockStudentCourseApi';
 
 export function loadStudentCourseSuccess(studentCourses){
     return {type:types.LOAD_STUDENT_COURSES_SUCCESS,studentCourses};
@@ -26,6 +26,6 @@ export function saveStudentCourse(studenCourse){
             dispatch(saveStudentCourseSuccess(studenCourse));
         }).catch(error=>{
             throw(error);
-        })
-    }
+        });
+    };
 }

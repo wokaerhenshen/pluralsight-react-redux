@@ -33,7 +33,7 @@ export default function courses(state = initialState.courses, action) {
         //console.log(action);
         return [
           ...state.filter(course => course.id !== action.courseId)
-        ]
+        ];
       
 
     default:

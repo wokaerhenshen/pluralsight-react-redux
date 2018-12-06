@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
-import {StudentListRow} from './StudentListRow';
 import * as studentActions from '../../actions/studentActions';
 
 class StudentList extends React.Component{
@@ -27,15 +26,19 @@ class StudentList extends React.Component{
                 </tr>
                 </thead>
                 <tbody>
-                {(this.props.students).map(student =>
-                    <tr><td key={student.id}>{student.name}</td></tr>
-                )}
+                {(this.props.students).map((student,index) =>
+                    <tr key={index}><td>{student.name}</td></tr>
+                )} 
                 </tbody>
                 </table>
             </div>
         );
     }
 }
+
+StudentList.propTypes = {
+    students: PropTypes.array.isRequired
+};
 
 function mapStateToProps(state) {
     //console.log(state);
@@ -44,11 +47,11 @@ function mapStateToProps(state) {
     };
 }
   
-  function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
     return {
       actions: bindActionCreators(studentActions, dispatch)
     };
-  }
+}
 
 
 

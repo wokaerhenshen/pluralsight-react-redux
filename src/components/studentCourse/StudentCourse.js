@@ -8,8 +8,8 @@ import studentCourse from '../../reducers/studentCourseReducer';
 class StudentCourse extends React.Component{
 
     redirectToAddStudentCoursePage(){
-        browserHistory.push('/studentCourse');       
-    }
+        browserHistory.push('/addStudentCourse');       
+    } 
 
     render(){
         return (
@@ -30,30 +30,46 @@ class StudentCourse extends React.Component{
                 </thead>
                 <tbody>
                 {(this.props.studentCourse).map((studentCourse,index) =>
-                    <tr><td key={studentCourse.id}>{studentCourse.student}</td>
-                        <td key={index}>{studentCourse.course}</td>
+                    <tr key={index}>
+                        <td>{studentCourse.studentName}</td>
+                        <td>{studentCourse.courseName}</td>
                     </tr>
                 )}
                 </tbody>
-                </table>
+            </table>
             </div>
         );
     }
 }
 
+StudentCourse.propTypes = {
+    studentCourse : PropTypes.array.isRequired
+};
+
+
 function mapStateToProps(state) {
     //console.log(state);
+    const result = [];
+    const map = new Map();
+    for (const item of state.studentCourse){
+        if(!map.has(item.studentId)){
+            map.set(item.studentId , true);    // set any value to Map
+            result.push({
+                studentId : item.studentId,
+                studentName: item.student,
+                courseName: item.course,
+                count : 1
+            });
+        }else{
+          //console.log(item);
+          var oneItem = result.find((e)=> e.studentId == item.studentId);
+          //console.log(oneItem);
+          oneItem.courseName += "   |   " + item.course;
+          oneItem.count ++; 
+        }
+    }
     return {
-        studentCourse: state.studentCourse
+        studentCourse: result
     };
 }
-  
-  function mapDispatchToProps(dispatch) {
-    return {
-      actions: bindActionCreators(studentCourseAction, dispatch)
-    };
-  }
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(StudentCourse);
+export default connect(mapStateToProps)(StudentCourse);

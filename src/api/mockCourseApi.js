@@ -92,7 +92,7 @@ const courses = [
     authorId:"karl12",
     length: "karl12",
     category: "karl12"
-  },
+  }
 ];
 
 function replaceAll(str, find, replace) {

@@ -5,7 +5,7 @@ import {browserHistory} from 'react-router';
 import * as courseActions from '../../actions/courseActions';
 import CourseList from './CourseList';
 import StudentList from '../student/StudentList';
-import StudentCourse from '../studentCourse/StudentCourse'
+import StudentCourse from '../studentCourse/StudentCourse';
 //import 
 
 class CoursesPage extends React.Component {
@@ -19,21 +19,21 @@ class CoursesPage extends React.Component {
   }
 
   render() {
-    var styles = {
+    let styles = {
       width:'500px',
       float:'left',
       marginLeft:'100px'
     };
 
-    var h1Style = {
+    let h1Style = {
       float:'left'
-    }
+    };
 
-    var btnStyle = {
+    let btnStyle = {
       position:'relative',
       top :'25px',
       left:'15px'
-    }
+    };
 
     return (
       <div>

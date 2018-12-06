@@ -2,8 +2,8 @@ import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
 const StudentListRow = ({student}) => {
-  console.log('hi');
-  console.log(student);
+  // console.log('hi');
+  // console.log(student);
   return (
     <tr>
       <td>{student}</td>
